@@ -471,3 +471,11 @@ h1, h2, h3 {
   .toolbar,
   .button-row { flex-wrap: wrap; }
 }
+
+.decision-shell {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top right, rgba(255,255,255,0.1), transparent 30%),
+    linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+}

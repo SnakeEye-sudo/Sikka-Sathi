@@ -3,18 +3,19 @@
   if (!root) return;
 
   const STORAGE_KEY = "sikka-sathi-state";
-  const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{"heads":0,"tails":0,"flips":[],"dice":1}');
+  const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{"heads":0,"tails":0,"flips":[],"dice":1,"quickPick":"Yes"}');
 
   root.innerHTML = `
     <section class="section-stack">
-      <article class="tool-card">
+      <article class="tool-card decision-shell">
         <div class="toolbar">
           <div>
-            <p class="eyebrow">Coin arena</p>
-            <h3>Heads ya tails?</h3>
+            <p class="eyebrow">Decision toss</p>
+            <h3>Coin, dice, aur quick pick</h3>
           </div>
           <div class="button-row">
             <button class="action-btn primary" id="flipBtn" type="button">Flip coin</button>
+            <button class="ghost-btn" id="pickBtn" type="button">Yes / No</button>
             <button class="ghost-btn" id="resetBtn" type="button">Reset</button>
           </div>
         </div>
@@ -28,24 +29,34 @@
         </div>
       </article>
 
-      <article class="tool-card">
+      <article class="tool-card decision-shell">
         <div class="toolbar">
           <div>
-            <p class="eyebrow">Bonus roller</p>
-            <h3>Dice bhi saath me</h3>
+            <p class="eyebrow">Support tools</p>
+            <h3>Dice aur quick answer</h3>
           </div>
           <button class="action-btn" id="diceBtn" type="button">Roll dice</button>
         </div>
-        <div class="stat-grid">
+        <div class="choice-grid">
           <div class="stat-box">
             <p class="mini-label">Dice result</p>
             <strong id="diceValue">1</strong>
             <span class="muted">Quick tie-breaker</span>
           </div>
           <div class="stat-box">
+            <p class="mini-label">Quick pick</p>
+            <strong id="pickValue">Yes</strong>
+            <span class="muted">Jab bas ek push chahiye ho</span>
+          </div>
+          <div class="stat-box">
             <p class="mini-label">Bias watch</p>
             <strong id="biasValue">Balanced</strong>
             <span class="muted">History ke hisab se</span>
+          </div>
+          <div class="stat-box">
+            <p class="mini-label">Total moves</p>
+            <strong id="totalMoves">0</strong>
+            <span class="muted">Coin + dice + pick</span>
           </div>
         </div>
       </article>
@@ -74,6 +85,8 @@
   const historyList = document.getElementById("historyList");
   const diceValue = document.getElementById("diceValue");
   const biasValue = document.getElementById("biasValue");
+  const pickValue = document.getElementById("pickValue");
+  const totalMoves = document.getElementById("totalMoves");
 
   function save() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -91,6 +104,8 @@
     tailsCount.textContent = String(state.tails);
     flipCount.textContent = String(state.flips.length);
     diceValue.textContent = String(state.dice);
+    pickValue.textContent = state.quickPick;
+    totalMoves.textContent = String(state.flips.length + 2);
     const delta = Math.abs(state.heads - state.tails);
     biasValue.textContent = delta <= 1 ? "Balanced" : state.heads > state.tails ? "Heads heavy" : "Tails heavy";
     renderHistory();
@@ -109,7 +124,7 @@
       latestFlip.textContent = side;
       latestNote.textContent = side === "Heads"
         ? "Aaj ka luck upar ja raha hai."
-        : "Tails aya hai, ab agla call aur mazेदार hoga.";
+        : "Tails aya hai, ab agla call aur mazedar hoga.";
       coinFace?.classList.remove("spinning");
       save();
       render();
@@ -119,6 +134,13 @@
   document.getElementById("flipBtn")?.addEventListener("click", flipCoin);
   document.getElementById("diceBtn")?.addEventListener("click", () => {
     state.dice = Math.floor(Math.random() * 6) + 1;
+    latestNote.textContent = `Dice ne ${state.dice} dikhaya.`;
+    save();
+    render();
+  });
+  document.getElementById("pickBtn")?.addEventListener("click", () => {
+    state.quickPick = Math.random() > 0.5 ? "Yes" : "No";
+    latestNote.textContent = `Quick pick ne ${state.quickPick} kaha.`;
     save();
     render();
   });
@@ -127,6 +149,7 @@
     state.tails = 0;
     state.flips = [];
     state.dice = 1;
+    state.quickPick = "Yes";
     if (coinFace) coinFace.textContent = "Heads";
     latestFlip.textContent = "Heads";
     latestNote.textContent = "Fresh board ready.";

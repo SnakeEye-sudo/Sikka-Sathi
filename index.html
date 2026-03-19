@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#17110b">
-  <meta name="description" content="Bold coin flipper and dice roller app with quick history, streak tracking, and offline-ready family utility styling.">
+  <meta name="theme-color" content="#171109">
+  <meta name="description" content="Decision app for coin toss, dice roll, and quick yes-no picks with history and stats.">
   <title>Sikka Sathi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,73 +13,9 @@
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body data-theme="night">
-  <div class="ambient-layer">
-    <div class="ambient-orb orb-a"></div>
-    <div class="ambient-orb orb-b"></div>
-    <div class="ambient-grid"></div>
-    <div class="ambient-noise"></div>
-  </div>
-
-  <div class="page-shell">
-    <header class="hero">
-      <div class="hero-top">
-        <div class="brand-wrap">
-          <img src="logo.svg" alt="Sikka Sathi logo" class="brand-logo">
-          <div>
-            <p class="hero-tag">Pocket chance board</p>
-            <h1>Sikka Sathi</h1>
-          </div>
-        </div>
-        <a class="family-chip" href="https://snakeeye-sudo.github.io/Aapka-Sathi/">Aapka-Sathi family</a>
-      </div>
-
-      <div class="hero-grid">
-        <section class="hero-copy">
-          <p class="eyebrow">Arcade chance utility</p>
-          <h2 class="hero-headline">Coin flip, dice roll, aur quick chance decisions ek bold board me.</h2>
-          <p class="hero-text">Fast toss animation, quick statistics, aur low-friction decision helpers ke saath jab turant call lena ho tab Sikka Sathi ready hai.</p>
-          <div class="hero-badges">
-            <span class="hero-badge">Coin flip</span><span class="hero-badge">Dice roller</span><span class="hero-badge">History board</span><span class="hero-badge">Offline ready</span>
-          </div>
-        </section>
-
-        <section class="hero-side">
-          <div class="metric-card">
-            <p class="eyebrow">Live streak</p>
-            <h3>Chance always ready</h3>
-            <strong>1 tap</strong>
-            <p class="muted">Quick toss without noise.</p>
-          </div>
-          <div class="metric-card secondary">
-            <p class="eyebrow">Info</p>
-            <h3>Decision mode</h3>
-            <p class="muted">Fast, playful, aur no-login setup.</p>
-          </div>
-        </section>
-      </div>
-    </header>
-
-    <main id="appRoot" class="app-root"></main>
-
-    <footer class="site-footer">
-      <div class="footer-brand">
-        <img src="logo.svg" alt="Sikka Sathi logo">
-        <div>
-          <strong>Sikka Sathi</strong>
-          <p>Chance ko playful aur premium banane ke liye.</p>
-        </div>
-      </div>
-      <nav class="footer-links">
-        <a href="about.html">About</a>
-        <a href="resources.html">Resources</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy-policy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </nav>
-    </footer>
-  </div>
-
+<body>
+  <main id="appRoot" class="app-root"></main>
   <script src="app.js"></script>
+  <script defer src="notification-prompt.js"></script>
 </body>
 </html>
