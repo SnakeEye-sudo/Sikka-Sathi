@@ -1,0 +1,17 @@
+{
+  "name": "Sikka Sathi",
+  "short_name": "Sikka",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#17110b",
+  "theme_color": "#17110b",
+  "description": "Bold coin flipper and dice roller app with quick history, streak tracking, and offline-ready family utility styling.",
+  "icons": [
+    {
+      "src": "logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
