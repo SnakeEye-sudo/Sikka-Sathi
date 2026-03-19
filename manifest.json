@@ -8,10 +8,11 @@
   "description": "Bold coin flipper and dice roller app with quick history, streak tracking, and offline-ready family utility styling.",
   "icons": [
     {
-      "src": "logo.svg",
+      "src": "logo.png",
       "sizes": "512x512",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any"
     }
   ]
 }
+
